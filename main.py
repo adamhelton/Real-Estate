@@ -5,4 +5,6 @@ r = requests.get("http://www.pyclass.com/real-estate/rock-springs-wy/LCWYROCKSPR
 c = r.content
 
 soup = BeautifulSoup (c, 'html.parser')
-print(soup.prettify())
+
+all = soup.find_all("div", {"class":"propertyRow"})
+print(all[0].find("h4", {"class":"propPrice"}).text.replace("/n", ""))
