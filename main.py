@@ -13,3 +13,8 @@ for item in all:
     print(item.find("h4", {"class", "propPrice"}).text.replace("/n", "").replace(" ", ""))
     print(item.find_all("span",{"class", "propAddressCollapse"})[0].text)
     print(item.find_all("span",{"class", "propAddressCollapse"})[1].text)
+    try:
+        print(item.find("span", {"class", "infoBed"}).text)
+    except:
+        pass
+    print(" ")
