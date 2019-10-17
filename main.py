@@ -10,9 +10,11 @@ all = soup.find_all("div", {"class":"propertyRow"})
 all[0].find("h4", {"class":"propPrice"}).text.replace("/n", "").replace(" ", "")
 
 for item in all:
-    print(item.find("h4", {"class", "propPrice"}).text.replace("/n", "").replace(" ", ""))
-    print(item.find_all("span",{"class", "propAddressCollapse"})[0].text)
-    print(item.find_all("span",{"class", "propAddressCollapse"})[1].text)
+    d = {}
+    d["Address"] = item.find_all("span",{"class", "propAddressCollapse"})[0].text
+    d["Locality"] = item.find_all("span",{"class", "propAddressCollapse"})[1].text
+    d["Price"] = item.find("h4", {"class", "propPrice"}).text.replace("/n", "").replace(" ", "")
+    
     try:
         print(item.find("span", {"class", "infoBed"}).find("b").text)
     except:
