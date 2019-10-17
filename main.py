@@ -32,5 +32,11 @@ for item in all:
         print(item.find("span", {"class", "infoValueHalfBath"}).find("b").text)
     except:
         print(None)
+    for column_group in item.find_all("div", {"class", "columnGroup"}):
+        #print(column_group)
+        for feature_group, feature_name in zip(column_group.find_all("span", {"class":"featureGroup"}),column_group.find_all("span",{"class":"featureName"})):
+            # print(feature_group.text, feature_name.text) USe this if you want all the feature info
+            if "Lot Size" in feature_group.text:
+                print(feature_name.text)
 
     print(" ")
